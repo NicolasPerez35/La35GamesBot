@@ -45,7 +45,6 @@ client.on('message', async message => {
             message.reply('error al ejecutar ese comando!');
         }
     }
-
 });
 
 client.login(token);

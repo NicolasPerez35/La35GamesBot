@@ -26,7 +26,7 @@ module.exports = {
                 m.delete({timeout: 3000});
             });
         }
-
+        
         purge();
 
     },

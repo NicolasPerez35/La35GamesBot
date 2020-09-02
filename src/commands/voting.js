@@ -21,6 +21,5 @@ module.exports = {
         let reaccionar = await pollChannel.send(embedPoll);
         reaccionar.react('750618555912945736');
         reaccionar.react('750618558630985748');
-
 	},
 };
