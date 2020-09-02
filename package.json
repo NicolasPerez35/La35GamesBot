@@ -1,0 +1,23 @@
+{
+  "name": "La35GamesBot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NicolasPerez35/La35GamesBot.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NicolasPerez35/La35GamesBot/issues"
+  },
+  "homepage": "https://github.com/NicolasPerez35/La35GamesBot#readme",
+  "dependencies": {
+    "discord.js": "^12.3.1"
+  }
+}
