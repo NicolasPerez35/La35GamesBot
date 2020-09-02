@@ -7,7 +7,9 @@ client.commands = new Discord.Collection();
 
 const commandFiles = fs.readdirSync('./src/commands').filter(file => file.endsWith('.js'));
 
-const config = require('./src/json/config.json');
+const { prefix, token } = require('./src/json/config.json');
+
+const emojis = ['<a:thisr:750618552397987861>','<a:thisl:750618552725274684>','<a:check:750618555912945736>','<a:noCheck:750618558630985748>','<a:FallGuys:750618554092748871>','<a:fakeblob:750618550883844156>','<a:pin:750639898800816168>'];
 
 client.once('ready', () => {
     console.log('Bot encenido');
@@ -20,28 +22,30 @@ for (const file of commandFiles) {
 }
 
 
-client.on('message', message => {
+client.on('message', async message => {
 
-    const args = message.content.slice(config.prefix.length).trim().split(/ +/);
+    if (message.content.startsWith(`${prefix}`)) {
+        const args = message.content.slice(prefix.length).trim().split(/ +/);
 
-    const commandName = args.shift().toLowerCase();
 
-    if (!client.commands.has(commandName)) return;
+        const commandName = args.shift().toLowerCase();
 
-    const command = client.commands.get(commandName);
+        if (!client.commands.has(commandName)) return;
 
-    if (command.args && !args.length) {
-        return message.channel.send(`No pusiste los argumentos necesarios, ${message.author}!`);
+        const command = client.commands.get(commandName);
+
+        if (command.args && !args.length) {
+            return message.channel.send(`No pusiste los argumentos necesarios, ${message.author}!`);
+        }
+
+        try {
+            command.execute(message, args, client, prefix, emojis);
+        } catch (error) {
+            console.error(error);
+            message.reply('error al ejecutar ese comando!');
+        }
     }
-
-    try {
-        command.execute(message, args, client);
-    } catch (error) {
-        console.error(error);
-        message.reply('error al ejecutar ese comando!');
-    }
-
 
 });
 
-client.login(config.token);
+client.login(token);
