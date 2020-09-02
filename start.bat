@@ -1,3 +1,3 @@
 @echo off
-cd C:\Users\Nicolas\desktop\La35GamesBot
+cd ""
 node index.js
