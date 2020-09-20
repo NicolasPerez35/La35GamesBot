@@ -1,3 +1,5 @@
+import EmbedVotacion from './src/class/EmbedVotacion.js';
+
 const fs = require('fs');
 const Discord = require('discord.js');
 
@@ -10,6 +12,9 @@ const commandFiles = fs.readdirSync('./src/commands').filter(file => file.endsWi
 const { prefix, token } = require('./src/json/config.json');
 
 const emojis = ['<a:thisr:750618552397987861>','<a:thisl:750618552725274684>','<a:check:750618555912945736>','<a:noCheck:750618558630985748>','<a:FallGuys:750618554092748871>','<a:fakeblob:750618550883844156>','<a:pin:750639898800816168>'];
+
+var embedvotacion = [];
+let cont = 0;
 
 client.once('ready', () => {
     console.log('Bot encenido');
